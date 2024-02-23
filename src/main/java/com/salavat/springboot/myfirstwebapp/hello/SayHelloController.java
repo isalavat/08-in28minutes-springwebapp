@@ -15,7 +15,7 @@ public class SayHelloController {
 
 	@RequestMapping("say-hello-html")
 	@ResponseBody
-	public String sayHellotml() {
+	public String sayHelloHtml() {
 		return """
 				<html>
 					<head>
@@ -26,6 +26,11 @@ public class SayHelloController {
 					</body>
 				</html>
 				""";
+	}
+
+	@RequestMapping("say-hello-jsp")
+	public String sayHelloJsp() {
+		return "sayHello";
 	}
 
 }
