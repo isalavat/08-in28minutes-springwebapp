@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import jakarta.validation.Valid;
+
 @Service
 public class TodoService {
 	private static List<Todo> todos = new ArrayList<>();
@@ -30,6 +32,15 @@ public class TodoService {
 
 	public void deleteById(int id) {
 		todos.removeIf(todo -> todo.getId() == id);
+	}
+
+	public Todo findById(int id) {
+		return todos.stream().filter(todo -> todo.getId() == id).findFirst().get();
+	}
+
+	public void updateTodo(@Valid Todo todo) {
+		deleteById(todo.getId());
+		todos.add(todo);
 	}
 
 }
